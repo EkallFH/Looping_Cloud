@@ -1,11 +1,1378 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Looping Cloud</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"
+        integrity="sha384-tViUnnbYAV00FLIhhi3v/dWt3Jxw4gZQcNoSCxCIFNJVCx7/D55/wXsrNIRANwdD" crossorigin="anonymous">
+
+    <style>
+        @media (max-width: 768px) {
+            .navbar-brand img {
+                width: 150px;
+                height: auto;
+            }
+
+            .navbar-nav {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .navbar-nav .nav-link {
+                font-size: 14px;
+            }
+        }
+
+        .text-blue {
+            color: #00275E;
+        }
+
+        .text-red {
+            color: #CD0505;
+            text-decoration: none;
+        }
+
+        .text-price {
+            color: #AED374;
+        }
+
+        .text-non-active {
+            color: #676A6C;
+            text-decoration: none;
+        }
+
+        .btn-custom {
+            display: flex;
+            align-items: center;
+            border: 1px solid #676A6C;
+            border-radius: 25px;
+            background-color: #fff;
+            margin-left: 10px;
+            transition: background-color 0.3s ease;
+            padding: 10px 10px;
+        }
+
+        .container-cus {
+            margin: 15px auto;
+            max-width: 1200px;
+            overflow-x: hidden;
+        }
+
+        .btn-custom i {
+            font-size: 18px;
+            margin-right: 5px;
+        }
+
+        .btn-custom:hover {
+            background-color: #f0f0f0;
+        }
+
+        .info-card {
+            border: 1px solid #E3DBDB;
+            border-radius: 10px;
+            padding-bottom: 15px;
+        }
+
+        .detail-card {
+            border-radius: 10px;
+        }
+
+        .row-card {
+            display: flex;
+            flex-wrap: wrap;
+            padding: 15px;
+        }
+
+        .color-border {
+            border-bottom: 3px solid #007BFF;
+        }
+
+        .detail {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            text-align: center;
+            padding: 10px;
+            color: #fff;
+            border: 1px solid #E3DBDB;
+            font-size: 16px;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 50px;
+            align-items: center;
+            margin-top: 20px;
+            padding: 20px;
+            border: 1px solid #E3DBDB;
+            border-radius: 10px;
+        }
+
+        .social-icons img {
+            width: 24px;
+            height: 24px;
+            cursor: pointer;
+        }
+
+        .avatar {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+        }
+
+        .info {
+            margin-left: 16px;
+        }
+
+        .info h5 {
+            margin: 0;
+        }
+
+        .profile-card {
+            max-width: 500px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 16px;
+            padding-bottom: 0px;
+            background-color: #fff;
+        }
+
+        .btn-profil {
+            width: 100%;
+            padding: 10px;
+            border-radius: 10px;
+            border: 1px solid;
+        }
+
+        .update-profil p {
+            font-size: 13px;
+        }
+
+        .information-card {
+            max-width: 500px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 16px;
+            padding-bottom: 0px;
+            background-color: #fff;
+        }
+
+        .information-inqury {
+            max-width: 500px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 12px;
+            background-color: #fff;
+        }
+
+        .card-link {
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        @media (max-width: 768px) {
+            .container-cus {
+                margin: 0 15px;
+            }
+
+            .breadcrumb-item {
+                font-size: 14px;
+            }
+
+            .carousel-inner img {
+                max-height: 300px;
+                object-fit: cover;
+            }
+
+            .location-text {
+                flex-direction: column;
+            }
+
+            .button {
+                margin-top: 10px;
+            }
+
+            .social-icons {
+                gap: 20px;
+            }
+
+            .profile-card,
+            .information-card {
+                max-width: 100%;
+            }
+
+            .avatar {
+                width: 80px;
+                height: 80px;
+            }
+
+            .btn-custom {
+                margin-left: 0;
+                margin-top: 10px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .btn-custom {
+                margin-right: 10px;
+            }
+
+            .breadcrumb-item {
+                font-size: 12px;
+            }
+
+            .text-blue {
+                font-size: 16px;
+            }
+
+            .btn-custom {
+                padding: 8px 5px;
+                font-size: 14px;
+            }
+
+            .detail {
+                font-size: 14px;
+            }
+
+            .profile-card,
+            .information-card {
+                padding: 10px;
+            }
+        }
+
+        .thead-padding th {
+            padding: 12px;
+        }
+
+        .tbody-padding td {
+            padding: 10px;
+        }
+
+        .table td,
+        .table th {
+            font-size: 14px;
+        }
+
+        .table td {
+            vertical-align: middle;
+            text-align: center;
+        }
+
+        .table th {
+            vertical-align: middle;
+            text-align: center;
+        }
+
+        .hidden-row-financing {
+            display: none;
+        }
+
+        .hidden-row-business {
+            display: none;
+        }
+
+        .content-container {
+            margin-left: 50px;
+            margin-right: 50px;
+            border: 1px solid #E3DBDB;
+            border-radius: 8px;
+            max-width: 1200px;
+        }
+
+        @media (max-width: 768px) {
+            .content-container {
+                margin-left: 15px !important;
+                margin-right: 15px !important;
+            }
+        }
+    </style>
+
 </head>
+
 <body>
-    
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg border-bottom sticky-top mx-auto"
+        style="border-color: #E7EAEC; background: white;">
+        <div class="container d-flex justify-content-between align-items-center">
+
+            <a class="navbar-brand me-auto" href="#">
+                <img src="/images/logo.png" alt="Bootstrap" width="265" height="65">
+            </a>
+
+            <div class="d-flex flex-column align-items-end ms-auto">
+                <div class="d-flex align-items-center">
+                    <img src="/images/padlock.svg" alt="" width="14" class="me-1">
+                    <a href="#" class="nav-link" style="font-size: 13px;">Login</a>
+                    <span class="mx-1">|</span>
+                    <img src="/images/person.svg" alt="" class="me-1">
+                    <a href="#" class="nav-link" style="font-size: 13px;">Register</a>
+                </div>
+                <div class="d-flex align-items-center mt-1">
+                    <a href="#" class="nav-link" style="font-size: 13px; font-weight: 600;">Contact Us</a>
+                    <span class="mx-2">|</span>
+                    <a href="#" class="nav-link" style="font-size: 13px; font-weight: 600;">About Us</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <!-- Navbar -->
+
+    <!-- Hero Section -->
+    <div class="container-cus mt-2">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="d-flex flex-column align-items-start mb-2">
+                    <ol class="breadcrumb mb-0 d-flex align-items-center">
+                        <li class="breadcrumb-icon fw-bold"
+                            style="font-size: 15px; font-weight: bold; margin-right: 10px;">
+                            <i class="bi bi-arrow-left text-red"></i>
+                        </li>
+                        <li class="breadcrumb-item" style="font-family: 'Roboto', sans-serif; font-size: 16px;">
+                            <a href="#" class="text-non-active">Home</a>
+                        </li>
+                        <li class="breadcrumb-item" aria-current="page"
+                            style="font-family: 'Roboto', sans-serif; font-size: 16px; font-weight: bold;">
+                            <a class="text-red">Property Detail Page</a>
+                        </li>
+                    </ol>
+                </div>
+                <div>
+                    <p class="fs-5 text-blue fw-medium mb-3">
+                        Farm Store, Great Income Producing Opportunity
+                    </p>
+                    <div id="carouselExample" class="carousel slide">
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <img src="/images/Hero Image.png" class="d-block w-100" alt="...">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="/images/Hero Image.png" class="d-block w-100" alt="...">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="/images/logo.png" class="d-block w-100" alt="...">
+                            </div>
+                        </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample"
+                            data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExample"
+                            data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
+                    </div>
+
+                    <!-- Location -->
+                    <div class="mt-3">
+                        <div class="d-flex justify-content-between location-text">
+                            <div class="d-flex">
+                                <i class="bi bi-geo-alt text-red fs-6"></i>
+                                <p class="text-non-active fw-medium ms-2">6341 Johnson Street, Cooper City Florida 33024
+                                    /<br>Retail / Free Standing</p>
+                            </div>
+                            <div class="d-flex button">
+                                <button type="button" class="btn-custom rounded d-flex align-items-center">
+                                    <i class="bi bi-plus-lg"></i>
+                                    <p class="mb-0 ms-2 fw-medium">Add Opportunity</p>
+                                </button>
+                                <button type="button" class="btn-custom rounded d-flex align-items-center">
+                                    <i class="bi bi-check2-all"></i>
+                                    <p class="mb-0 ms-2 fw-medium">Make Soft Offer</p>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Info Card Section -->
+                    <div class="info-card mt-3">
+                        <div class="d-flex align-items-center mb-3 border-bottom border-1 color-border">
+                            <p class="ms-3 mb-2 mt-2 fw-medium text-black">Add Opportunity</p>
+                        </div>
+                        <div class="row-card mb-5">
+                            <div class="col-12 col-sm-6 col-md-4 mb-4">
+                                <div class="d-flex">
+                                    <p class="mb-1 text-non-active fw-medium">Listing ID:</p>
+                                    <p class="mb-1 ms-1 fw-medium">CL-Florida-10722</p>
+                                </div>
+                            </div>
+                            <div class="col-12 col-sm-6 col-md-4 mb-4">
+                                <div class="d-flex">
+                                    <p class="mb-1 text-non-active fw-medium">Building Size:</p>
+                                    <p class="mb-1 ms-1 fw-medium">0 SqFt</p>
+                                </div>
+                            </div>
+                            <div class="col-12 col-sm-6 col-md-4 mb-4">
+                                <div class="d-flex">
+                                    <p class="mb-1 text-non-active fw-medium">Business Available for Sale:</p>
+                                    <p class="mb-1 ms-1 fw-medium">No</p>
+                                </div>
+                            </div>
+                            <div class="col-12 col-sm-6 col-md-4 mb-4">
+                                <div class="d-flex">
+                                    <p class="mb-1 text-non-active fw-medium">Status:</p>
+                                    <p class="mb-1 ms-1 fw-medium">Accepting Offers</p>
+                                </div>
+                            </div>
+                            <div class="col-12 col-sm-6 col-md-4 mb-4">
+                                <div class="d-flex">
+                                    <p class="mb-1 text-non-active fw-medium">Lot Size:</p>
+                                    <p class="mb-1 ms-1 fw-medium">0 Not Specified</p>
+                                </div>
+                            </div>
+                            <div class="col-12 col-sm-6 col-md-4 mb-4">
+                                <div class="d-flex">
+                                    <p class="mb-1 text-non-active fw-medium">Is Net Lease Investment:</p>
+                                    <p class="mb-1 ms-1 fw-medium">No</p>
+                                </div>
+                            </div>
+                            <div class="col-12 col-sm-6 col-md-4 mb-4">
+                                <div class="d-flex">
+                                    <p class="mb-1 text-non-active fw-medium">Financing:</p>
+                                    <p class="mb-1 ms-1 fw-medium">Owner Financing</p>
+                                </div>
+                            </div>
+                            <div class="col-12 col-sm-6 col-md-4 mb-4">
+                                <div class="d-flex">
+                                    <p class="mb-1 text-non-active fw-medium">No of Stories:</p>
+                                    <p class="mb-1 ms-1 fw-medium">0</p>
+                                </div>
+                            </div>
+                            <div class="col-12 col-sm-6 col-md-4 mb-4">
+                                <div class="d-flex">
+                                    <p class="mb-1 text-non-active fw-medium">Property On Ground Lease:</p>
+                                    <p class="mb-1 ms-1 fw-medium">No</p>
+                                </div>
+                            </div>
+                            <div class="col-12 col-sm-6 col-md-4 mb-4">
+                                <div class="d-flex">
+                                    <p class="mb-1 text-non-active fw-medium">Occupancy:</p>
+                                    <p class="mb-1 ms-1 fw-medium">0%</p>
+                                </div>
+                            </div>
+                            <div class="col-12 col-sm-6 col-md-4 mb-4">
+                                <div class="d-flex">
+                                    <p class="mb-1 text-non-active fw-medium">No of Parking:</p>
+                                    <p class="mb-1 ms-1 fw-medium">0</p>
+                                </div>
+                            </div>
+                            <div class="col-12 col-sm-6 col-md-4 mb-4">
+                                <div class="d-flex">
+                                    <p class="mb-1 text-non-active fw-medium">Building Status:</p>
+                                    <p class="mb-1 ms-1 fw-medium">Existing</p>
+                                </div>
+                            </div>
+                            <div class="col-12 col-sm-6 col-md-4 mb-4">
+                                <div class="d-flex">
+                                    <p class="mb-1 text-non-active fw-medium">Year Build:</p>
+                                    <p class="mb-1 ms-1 fw-medium">0</p>
+                                </div>
+                            </div>
+                            <p style="margin-bottom: 97px;"><span class="fw-bold">Listing Summary:</span> Great
+                                Investment Property, Monthly income, business has 10 years plus lease.</p>
+                        </div>
+
+                        <!-- button -->
+                        <div class="d-flex justify-content-center mb-3">
+                            <div class="detail rounded d-flex align-items-center">
+                                <img src="/images/details.svg" alt="">
+                                <p class="mb-0 ms-2 fw-medium text-black">Detail</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Column: Social Icons and Profile Card -->
+            <div class="col-md-4">
+                <!-- Social Icons -->
+                <div class="social-icons mb-4 d-flex justify-content-center">
+                    <img src="/images/facebook.svg" alt="Facebook">
+                    <img src="/images/x.svg" alt="X">
+                    <img src="/images/google.svg" alt="Google">
+                    <img src="/images/mail.svg" alt="Mail">
+                    <img src="/images/filled.svg" alt="Filled">
+                </div>
+
+                <!-- Profile Card -->
+                <div class="profile-card d-flex flex-column align-items-start">
+                    <div class="d-flex align-items-center">
+                        <img src="/images/avatar.png" alt="Avatar" class="avatar">
+                        <div class="info ms-3"> <!-- Added ms-3 for margin start -->
+                            <h5 class="mb-1">John Doe</h5>
+                            <p class="mb-1">Company Name</p>
+                            <div class="d-flex gap-2">
+                                <img src="/images/phone.svg" alt="" style="width: 20px;">
+                                <p class="mb-0">Office Phone: 786-234-7928</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="button-container d-flex mt-3 w-100 gap-3">
+                        <button type="button"
+                            class="btn-profil btn-primary d-flex align-items-center justify-content-center">
+                            <i class="bi bi-person me-2"></i>
+                            <p class="mb-0">Profile</p>
+                        </button>
+                        <button type="button"
+                            class="btn-profil btn-primary d-flex align-items-center justify-content-center">
+                            <i class="bi bi-chat-dots-fill"></i>
+                            <p class="mb-0 ms-2">Send Message</p>
+                        </button>
+                    </div>
+                    <div class="update mt-3 mb-0">
+                        <div class="update-profil d-flex">
+                            <p class="fw-bold">Published on:</p>
+                            <p class="ms-1">Wednesday, February 12, 2014 10:21:03 PM</p>
+                        </div>
+                        <div class="update-profil d-flex">
+                            <p class="fw-bold">Updated on:</p>
+                            <p class="ms-1">Thursday, February 13, 2014 10:15:55 PM</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Traditional Acquisition -->
+                <div class="information-card mt-3">
+                    <div class="d-flex justify-content-between border-bottom border-1 color-border">
+                        <p>Traditional Acquisition</p>
+                        <i class="bi bi-info-circle"></i>
+                    </div>
+                    <div class="mt-3">
+                        <p class="fw-medium text-blue">Purchase Only</p>
+                        <div class="d-flex">
+                            <p class="fw-bold">Asking Price:</p>
+                            <p class="ms-1 fw-medium text-non-active">$600,000.00</p>
+                        </div>
+                        <div class="d-flex">
+                            <p class="fw-bold">Cap Rate:</p>
+                            <p class="ms-1 fw-medium text-non-active">0.83%;</p>
+                            <p class="ms-1 fw-medium">Commission Split:</p>
+                            <p class="ms-1 fw-medium text-non-active">3%</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Auction Information -->
+                <div class="information-card mt-3">
+                    <div class="d-flex justify-content-between border-bottom border-1 color-border">
+                        <p>Auction Information</p>
+                        <i class="bi bi-info-circle"></i>
+                    </div>
+                    <div class="mt-3">
+                        <p class="fw-normal fst-italic">This Option is not currently available by the lister</p>
+                    </div>
+                </div>
+
+                <!-- Business to Business Only -->
+                <div class="information-card mt-3">
+                    <div class="d-flex justify-content-between border-bottom border-1 color-border">
+                        <p>Business to Business Only</p>
+                        <i class="bi bi-info-circle"></i>
+                    </div>
+                    <div class="mt-3">
+                        <p class="fw-medium text-blue">Income & Partnership:</p>
+                        <div class="d-flex">
+                            <p class="fw-bold">Income:</p>
+                            <p class="ms-1 fw-medium text-price">$3,500.00/mn.</p>
+                        </div>
+                        <div class="d-flex">
+                            <p class="fw-bold">Owner Partnership:</p>
+                            <p class="ms-1 fw-medium text-non-active">30%;</p>
+                            <p class="ms-1 fw-medium">Commission Split:</p>
+                            <p class="ms-1 fw-medium text-non-active">3%</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Purchase with Business to Business -->
+                <div class="information-card mt-3">
+                    <div class="d-flex justify-content-between border-bottom border-1 color-border">
+                        <p>Purchase with Business to Business</p>
+                        <i class="bi bi-info-circle"></i>
+                    </div>
+                    <div class="mt-3">
+                        <p class="fw-medium text-blue">Purchase, Income & Owner Partnership:</p>
+                        <div class="d-flex">
+                            <p class="fw-bold">Asking Price:</p>
+                            <p class="ms-1 fw-medium text-price">$450,000.00</p>
+                        </div>
+                        <div class="d-flex">
+                            <p class="fw-bold">Income:</p>
+                            <p class="ms-1 fw-medium text-non-active">$1,500.00/mn.;</p>
+                            <p class="ms-1 fw-medium">Partnership: 25%;</p>
+                        </div>
+                        <div class="d-flex">
+                            <p class="fw-bold">Cap Rate:</p>
+                            <p class="ms-1 fw-medium text-non-active">0%;</p>
+                            <p class="ms-1 fw-medium">Com. Split:</p>
+                            <p class="ms-1 fw-medium text-non-active">3%</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Acquisition Option Inquiry -->
+                <div class="information-inqury mt-3">
+                    <div class="d-flex justify-content-center align-items-center">
+                        <i class="bi bi-info-circle me-2"></i>
+                        <p class="text-center mb-0">Acquisition Option Inquiry</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Hero Section -->
+
+    <!-- Purchase Only Section -->
+    <section class="my-4 content-container mx-auto">
+        <div>
+            <div class="text-danger pb-1 d-flex flex-column align-items-start"
+                style="border-bottom: 1.5px solid #E3DBDB;">
+                <h2 class="fs-5 mt-4 ms-3 mb-1">Purchase Only</h2>
+            </div>
+            <div class="bg-danger" style="width: 11%; margin-top: -1.5px; margin-left: 16px; height: 1.5px;"></div>
+
+            <div class="mx-3 my-4 px-4 py-3" style="background-color: rgba(35, 198, 200, 0.1); border-radius: 8px;">
+                <p class="mb-0 fw-semibold" style="color: #00275E;">Asking Price: $600,000.00 </p>
+            </div>
+
+            <div class="d-flex my-3 px-4 flex-column flex-md-row"
+                style="gap: 20px; border-bottom: 1.5px solid #E3DBDB;">
+                <p>Acquisition Option Selected: <strong>Traditional Purchase</strong></p>
+                <p>Cap Rate (%): <strong>0.83</strong></p>
+                <p>Commission Split (%): <strong>3</strong></p>
+            </div>
+
+            <!-- Recent Financing -->
+            <div class="mt-3 px-4" style="border-bottom: 1.3px solid #E3DBDB;">
+                <p><strong>Recent Financing Opportunities:</strong></p>
+            </div>
+
+            <div class="table-responsive" style="overflow-x: auto;">
+                <table class="table table-sm mb-0">
+                    <thead class="table-secondary thead-padding opacity-75">
+                        <tr>
+                            <th scope="col">Action</th>
+                            <th scope="col">Company</th>
+                            <th scope="col">Capital</th>
+                            <th scope="col">Required Down</th>
+                            <th scope="col">Interest Rate</th>
+                            <th scope="col">Loan Periode</th>
+                            <th scope="col">Crowd Funding</th>
+                            <th scope="col">Loan Type</th>
+                            <th scope="col">Monthly Payment</th>
+                        </tr>
+                    </thead>
+                    <tbody class="tbody-padding">
+                        <tr>
+                            <td>
+                                <div class="dropdown">
+                                    <button class="btn btn-sm dropdown-toggle" type="button"
+                                        style="border: 1px solid #E3DBDB; border-radius: 8px;" type="button"
+                                        id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                                        Actions
+                                    </button>
+                                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                        <li><a class="dropdown-item" href="#">Edit</a></li>
+                                        <li><a class="dropdown-item" href="#">Delete</a></li>
+                                        <li><a class="dropdown-item" href="#">View</a></li>
+                                    </ul>
+                                </div>
+                            </td>
+                            <td>
+                                Merchant Waves
+                                Private Lender
+                            </td>
+                            <td>$250,000.00</td>
+                            <td>$25,000.00</td>
+                            <td>6.5%</td>
+                            <td>120 month(s)</td>
+                            <td>No</td>
+                            <td>Fixed</td>
+                            <td>$2,838.70</td>
+                        </tr>
+
+                        <tr class="hidden-row-financing">
+                            <td>
+                                <div class="dropdown">
+                                    <button class="btn btn-sm dropdown-toggle" type="button"
+                                        style="border: 1px solid #E3DBDB; border-radius: 8px;" type="button"
+                                        id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
+                                        Actions
+                                    </button>
+                                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton2">
+                                        <li><a class="dropdown-item" href="#">Edit</a></li>
+                                        <li><a class="dropdown-item" href="#">Delete</a></li>
+                                        <li><a class="dropdown-item" href="#">View</a></li>
+                                    </ul>
+                                </div>
+                            </td>
+                            <td>
+                                Example Company
+                                Additional Info
+                            </td>
+                            <td>$500,000.00</td>
+                            <td>$50,000.00</td>
+                            <td>5.0%</td>
+                            <td>60 month(s)</td>
+                            <td>Yes</td>
+                            <td>Variable</td>
+                            <td>$8,333.33</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="view-all-container d-flex justify-content-between align-items-center py-1 px-3"
+                style="background-color: #F8F8F8;">
+                <p class="mb-0 text-dark">Recent Private Funding Opportunities.</p>
+                <button id="viewAllFinancing" class="view-all-btn text-dark"
+                    style="background-color: transparent; cursor: pointer; border: 1px solid #E3DBDB; border-radius: 8px; padding: 6px 8px;">
+                    View All
+                </button>
+            </div>
+            <div class="px-4" style="border-bottom: 1.3px solid #E3DBDB;"></div>
+
+            <!-- Recent Business -->
+            <div class="mt-3 px-4" style="border-bottom: 1.3px solid #E3DBDB;">
+                <p><strong>Recent Business Opportunities:</strong></p>
+            </div>
+
+            <div class="table-responsive" style="overflow-x: auto;">
+                <table class="table table-sm mb-0">
+                    <thead class="table-secondary thead-padding opacity-75">
+                        <tr>
+                            <th scope="col">Action</th>
+                            <th scope="col">Company</th>
+                            <th scope="col">Category</th>
+                            <th scope="col">Service Name</th>
+                            <th scope="col">Recurring</th>
+                            <th scope="col">Required Periode</th>
+                            <th scope="col">Cost</th>
+                        </tr>
+                    </thead>
+                    <tbody class="tbody-padding">
+                        <tr>
+                            <td>
+                                <div class="dropdown">
+                                    <button class="btn btn-sm dropdown-toggle" type="button"
+                                        style="border: 1px solid #E3DBDB; border-radius: 8px;" type="button"
+                                        id="dropdownMenuButton3" data-bs-toggle="dropdown" aria-expanded="false">
+                                        Actions
+                                    </button>
+                                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton3">
+                                        <li><a class="dropdown-item" href="#">Edit</a></li>
+                                        <li><a class="dropdown-item" href="#">Delete</a></li>
+                                        <li><a class="dropdown-item" href="#">View</a></li>
+                                    </ul>
+                                </div>
+                            </td>
+                            <td>Punta Painting Services</td>
+                            <td>Maintenance</td>
+                            <td>Remodeling, Restoration Service</td>
+                            <td>No</td>
+                            <td>12 months</td>
+                            <td>$200.00</td>
+                        </tr>
+
+                        <tr class="hidden-row-business">
+                            <td>
+                                <div class="dropdown">
+                                    <button class="btn btn-sm dropdown-toggle" type="button"
+                                        style="border: 1px solid #E3DBDB; border-radius: 8px;" type="button"
+                                        id="dropdownMenuButton4" data-bs-toggle="dropdown" aria-expanded="false">
+                                        Actions
+                                    </button>
+                                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton4">
+                                        <li><a class="dropdown-item" href="#">Edit</a></li>
+                                        <li><a class="dropdown-item" href="#">Delete</a></li>
+                                        <li><a class="dropdown-item" href="#">View</a></li>
+                                    </ul>
+                                </div>
+                            </td>
+                            <td>Allied Insurance Company</td>
+                            <td>Insurance Services</td>
+                            <td>Commercial Property Insurance</td>
+                            <td>No</td>
+                            <td>12 months</td>
+                            <td>$200.00</td>
+                        </tr>
+
+                        <tr class="hidden-row-business">
+                            <td>
+                                <div class="dropdown">
+                                    <button class="btn btn-sm dropdown-toggle" type="button"
+                                        style="border: 1px solid #E3DBDB; border-radius: 8px;" type="button"
+                                        id="dropdownMenuButton5" data-bs-toggle="dropdown" aria-expanded="false">
+                                        Actions
+                                    </button>
+                                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton5">
+                                        <li><a class="dropdown-item" href="#">Edit</a></li>
+                                        <li><a class="dropdown-item" href="#">Delete</a></li>
+                                        <li><a class="dropdown-item" href="#">View</a></li>
+                                    </ul>
+                                </div>
+                            </td>
+                            <td>Larry's Professional Cleaning Services</td>
+                            <td>Maintenance</td>
+                            <td>Cleaning Service</td>
+                            <td>Yes</td>
+                            <td>12 months</td>
+                            <td>$200.00</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="view-all-container d-flex justify-content-between align-items-center py-1 px-3"
+                style="background-color: #F8F8F8;">
+                <p class="mb-0 text-dark">Recent business services opportunities.</p>
+                <button id="viewAllBusiness" class="view-all-btn text-dark"
+                    style="background-color: transparent; cursor: pointer; border: 1px solid #E3DBDB; border-radius: 8px; padding: 6px 8px;">
+                    View All
+                </button>
+            </div>
+        </div>
+    </section>
+    <!-- Purchase Only Section -->
+
+    <!-- B2B Only Section -->
+    <div class="my-4 content-container mx-auto">
+        <div>
+            <div class="text-danger pb-1 d-flex flex-column align-items-start"
+                style="border-bottom: 1.5px solid #E3DBDB;">
+                <h2 class="fs-5 mt-4 ms-3 mb-1">B2B Only</h2>
+            </div>
+            <div class="bg-danger" style="width: 18%; margin-top: -1.5px; margin-left: 16px; height: 1.5px;"></div>
+
+            <div class="mx-3 my-4 px-4 py-3 d-flex"
+                style="background-color: rgba(35, 198, 200, 0.1); border-radius: 8px; gap: 10px;">
+                <img src="/images/checkbox.svg" alt="">
+                <p class="mb-0 fw-semibold" style="color: #00275E;">Pct. Partnership: 30%, Monthly Income: $3,500.00</p>
+            </div>
+
+            <!-- Kolom Responsif dengan Flex untuk Paragraf -->
+            <div class="h-6 pb-2 border-bottom border-secondary" style="--bs-border-opacity: .5;">
+                <!-- Kolom Pertama (3 Paragraf) -->
+                <div class="row justify-content-center px-3 mb-3 text-md-start">
+                    <div class="col-12 col-md-4">
+                        <p>Acquisition Option Selected: <strong>Purchase & Business Partnership & Monthly
+                                Income</strong></p>
+                    </div>
+                    <div class="col-12 col-md-4">
+                        <p>Min. Monthly Income :<strong>$3,500.00</strong>
+                        <p class="fw-normal">for 20 Years</p>
+                        </p>
+                    </div>
+                    <div class="col-12 col-md-4">
+                        <p>Min. Business Ownership (%) :<strong> 30</strong></p>
+                    </div>
+                </div>
+
+                <!-- Kolom Kedua (4 Paragraf) -->
+                <div class="row justify-content-center px-3  text-md-start">
+                    <div class="col-12 col-md-3">
+                        <p>Commission Split (%): <strong>3</strong></p>
+                    </div>
+                    <div class="col-12 col-md-3">
+                        <p>Is Broker/Realtor Participation Allowed : <strong>Yes</strong></p>
+                    </div>
+                    <div class="col-12 col-md-3">
+                        <p>Additional Terms:</p>
+                    </div>
+                    <div class="col-12 col-md-3">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- B2B Only Section -->
+
+    <!-- Purchase with B2B Only Section -->
+    <section class="my-4 content-container mx-auto">
+        <div>
+            <div class="text-danger pb-1 d-flex flex-column align-items-start"
+                style="border-bottom: 1.5px solid #E3DBDB;">
+                <h2 class="fs-5 mt-4 ms-3 mb-1">Purchase with B2B Only</h2>
+            </div>
+            <div class="bg-danger" style="width: 18%; margin-top: -1.5px; margin-left: 16px; height: 1.5px;"></div>
+
+            <div class="mx-3 my-4 px-4 py-3 d-flex"
+                style="background-color: rgba(35, 198, 200, 0.1); border-radius: 8px; gap: 10px;">
+                <img src="/images/checkbox.svg" alt="">
+                <p class="mb-0 fw-semibold" style="color: #00275E;">Asking Price: $450,000.00, Pct. Partnership: 25%,
+                    Monthly Income: 1500</p>
+            </div>
+
+            <div class="h-6 pb-2 border-bottom border-secondary" style="--bs-border-opacity: .5;">
+                <div class="d-flex col-12 col-md-12 px-3 mb-3 flex-column flex-md-row" style="gap: 20px;">
+                    <p>Acquisition Option Selected: <strong>Purchase & Business Partnership & Monthly Income</strong>
+                    </p>
+                    <p>Min. Asking Price: <strong>$450,000.00</strong></p>
+                    <p>Min. Monthly Income : <strong>$1,500.00 for 20 Years</strong></p>
+                </div>
+
+                <div class="d-flex col-12 col-md-12 px-3 flex-column flex-md-row" style="gap: 20px;">
+                    <p>Min. Business Ownership (%): <strong>25</strong></p>
+                    <p>Commission Split (%): <strong>3</strong></p>
+                    <p>Is Broker/Realtor Participation Allowed: <strong>Yes</strong></p>
+                    <p>Additional Terms: <strong>Yes</strong></p>
+                </div>
+            </div>
+
+            <!-- Recent Financing -->
+            <div class="mt-3 px-4" style="border-bottom: 1.3px solid #E3DBDB;">
+                <p><strong>Recent Financing Opportunities:</strong></p>
+            </div>
+
+            <div class="table-responsive" style="overflow-x: auto;">
+                <table class="table table-sm mb-0">
+                    <thead class="table-secondary thead-padding opacity-75">
+                        <tr>
+                            <th scope="col">Action</th>
+                            <th scope="col">Company</th>
+                            <th scope="col">Capital</th>
+                            <th scope="col">Required Down</th>
+                            <th scope="col">Interest Rate</th>
+                            <th scope="col">Loan Periode</th>
+                            <th scope="col">Crowd Funding</th>
+                            <th scope="col">Loan Type</th>
+                            <th scope="col">Monthly Payment</th>
+                        </tr>
+                    </thead>
+                    <tbody class="tbody-padding">
+                        <tr>
+                            <td>
+                                <div class="dropdown">
+                                    <button class="btn btn-sm dropdown-toggle" type="button"
+                                        style="border: 1px solid #E3DBDB; border-radius: 8px;" type="button"
+                                        id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                                        Actions
+                                    </button>
+                                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                        <li><a class="dropdown-item" href="#">Edit</a></li>
+                                        <li><a class="dropdown-item" href="#">Delete</a></li>
+                                        <li><a class="dropdown-item" href="#">View</a></li>
+                                    </ul>
+                                </div>
+                            </td>
+                            <td>
+                                Merchant Waves
+                                Private Lender
+                            </td>
+                            <td>$250,000.00</td>
+                            <td>$25,000.00</td>
+                            <td>6.5%</td>
+                            <td>120 month(s)</td>
+                            <td>No</td>
+                            <td>Fixed</td>
+                            <td>$2,838.70</td>
+                        </tr>
+
+                        <tr class="more-info-financing">
+                            <td>
+                                <div class="dropdown">
+                                    <button class="btn btn-sm dropdown-toggle" type="button"
+                                        style="border: 1px solid #E3DBDB; border-radius: 8px;" type="button"
+                                        id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
+                                        Actions
+                                    </button>
+                                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton2">
+                                        <li><a class="dropdown-item" href="#">Edit</a></li>
+                                        <li><a class="dropdown-item" href="#">Delete</a></li>
+                                        <li><a class="dropdown-item" href="#">View</a></li>
+                                    </ul>
+                                </div>
+                            </td>
+                            <td>
+                                Example Company
+                                Additional Info
+                            </td>
+                            <td>$500,000.00</td>
+                            <td>$50,000.00</td>
+                            <td>5.0%</td>
+                            <td>60 month(s)</td>
+                            <td>Yes</td>
+                            <td>Variable</td>
+                            <td>$8,333.33</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="view-all-container d-flex justify-content-between align-items-center py-1 px-3"
+                style="background-color: #F8F8F8;">
+                <p class="mb-0 text-dark">Recent Private Funding Opportunities.</p>
+                <button id="showMoreFinancing" class="view-all-btn text-dark"
+                    style="background-color: transparent; cursor: pointer; border: 1px solid #E3DBDB; border-radius: 8px; padding: 6px 8px;">
+                    View All
+                </button>
+            </div>
+            <div class="px-4" style="border-bottom: 1.3px solid #E3DBDB;"></div>
+
+            <!-- Recent Business -->
+            <div class="mt-3 px-4" style="border-bottom: 1.3px solid #E3DBDB;">
+                <p><strong>Recent Business Opportunities:</strong></p>
+            </div>
+
+            <div class="table-responsive" style="overflow-x: auto;">
+                <table class="table table-sm mb-0">
+                    <thead class="table-secondary thead-padding opacity-75">
+                        <tr>
+                            <th scope="col">Action</th>
+                            <th scope="col">Company</th>
+                            <th scope="col">Category</th>
+                            <th scope="col">Service Name</th>
+                            <th scope="col">Recurring</th>
+                            <th scope="col">Required Periode</th>
+                            <th scope="col">Cost</th>
+                        </tr>
+                    </thead>
+                    <tbody class="tbody-padding">
+                        <tr>
+                            <td>
+                                <div class="dropdown">
+                                    <button class="btn btn-sm dropdown-toggle" type="button"
+                                        style="border: 1px solid #E3DBDB; border-radius: 8px;" type="button"
+                                        id="dropdownMenuButton3" data-bs-toggle="dropdown" aria-expanded="false">
+                                        Actions
+                                    </button>
+                                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton3">
+                                        <li><a class="dropdown-item" href="#">Edit</a></li>
+                                        <li><a class="dropdown-item" href="#">Delete</a></li>
+                                        <li><a class="dropdown-item" href="#">View</a></li>
+                                    </ul>
+                                </div>
+                            </td>
+                            <td>Punta Painting Services</td>
+                            <td>Maintenance</td>
+                            <td>Remodeling, Restoration Service</td>
+                            <td>No</td>
+                            <td>12 months</td>
+                            <td>$200.00</td>
+                        </tr>
+
+                        <tr class="more-info-business">
+                            <td>
+                                <div class="dropdown">
+                                    <button class="btn btn-sm dropdown-toggle" type="button"
+                                        style="border: 1px solid #E3DBDB; border-radius: 8px;" type="button"
+                                        id="dropdownMenuButton4" data-bs-toggle="dropdown" aria-expanded="false">
+                                        Actions
+                                    </button>
+                                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton4">
+                                        <li><a class="dropdown-item" href="#">Edit</a></li>
+                                        <li><a class="dropdown-item" href="#">Delete</a></li>
+                                        <li><a class="dropdown-item" href="#">View</a></li>
+                                    </ul>
+                                </div>
+                            </td>
+                            <td>Allied Insurance Company</td>
+                            <td>Insurance Services</td>
+                            <td>Commercial Property Insurance</td>
+                            <td>No</td>
+                            <td>12 months</td>
+                            <td>$200.00</td>
+                        </tr>
+
+                        <tr class="more-info-business">
+                            <td>
+                                <div class="dropdown">
+                                    <button class="btn btn-sm dropdown-toggle" type="button"
+                                        style="border: 1px solid #E3DBDB; border-radius: 8px;" type="button"
+                                        id="dropdownMenuButton5" data-bs-toggle="dropdown" aria-expanded="false">
+                                        Actions
+                                    </button>
+                                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton5">
+                                        <li><a class="dropdown-item" href="#">Edit</a></li>
+                                        <li><a class="dropdown-item" href="#">Delete</a></li>
+                                        <li><a class="dropdown-item" href="#">View</a></li>
+                                    </ul>
+                                </div>
+                            </td>
+                            <td>Larry's Professional Cleaning Services</td>
+                            <td>Maintenance</td>
+                            <td>Cleaning Service</td>
+                            <td>Yes</td>
+                            <td>12 months</td>
+                            <td>$200.00</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="view-all-container d-flex justify-content-between align-items-center py-1 px-3"
+                style="background-color: #F8F8F8;">
+                <p class="mb-0 text-dark">Recent business services opportunities.</p>
+                <button id="showMoreBusiness" class="view-all-btn text-dark"
+                    style="background-color: transparent; cursor: pointer; border: 1px solid #E3DBDB; border-radius: 8px; padding: 6px 8px;">
+                    View All
+                </button>
+            </div>
+        </div>
+    </section>
+    <!-- Purchase with B2B Only Section -->
+
+    <!-- Details Section -->
+    <div class="my-4 content-container mx-auto">
+        <div>
+            <div class="text-danger pb-1 d-flex flex-column align-items-start"
+                style="border-bottom: 1.5px solid #E3DBDB;">
+                <h2 class="fs-5 mt-4 ms-3 mb-1">Details</h2>
+            </div>
+            <div class="bg-danger" style="width: 18%; margin-top: -1.5px; margin-left: 16px; height: 1.5px;"></div>
+
+            <div class="my-3 px-3 py-2 d-flex">
+                <p class="mb-0 fw-semibold fs-5">Complete Detail</p>
+            </div>
+
+            <!-- Kolom Responsif dengan Flex untuk Paragraf -->
+            <div class="detail-card">
+                <div class="row-card">
+                    <div class="col-12 col-sm-6 col-md-4 mb-4">
+                        <div class="d-flex">
+                            <p class="mb-1 text-non-active fw-medium">Year Build:</p>
+                            <p class="mb-1 ms-1 fw-medium">0</p>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-6 col-md-4 mb-4">
+                        <div class="d-flex">
+                            <p class="mb-1 text-non-active fw-medium">No of Total Units:</p>
+                            <p class="mb-1 ms-1 fw-medium">0</p>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-6 col-md-4 mb-4">
+                        <div class="d-flex">
+                            <p class="mb-1 text-non-active fw-medium">Property on Ground Lease?:</p>
+                            <p class="mb-1 ms-1 fw-medium">No</p>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-6 col-md-4 mb-4">
+                        <div class="d-flex">
+                            <p class="mb-1 text-non-active fw-medium">Building Size:</p>
+                            <p class="mb-1 ms-1 fw-medium"> 0 SqFt</p>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-6 col-md-4 mb-4">
+                        <div class="d-flex">
+                            <p class="mb-1 text-non-active fw-medium">Property Current Status:</p>
+                            <p class="mb-1 ms-1 fw-medium">Normal Sale</p>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-6 col-md-4 mb-4">
+                        <div class="d-flex">
+                            <p class="mb-1 text-non-active fw-medium">Net Lease Investment?:</p>
+                            <p class="mb-1 ms-1 fw-medium">No</p>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-6 col-md-4 mb-4">
+                        <div class="d-flex">
+                            <p class="mb-1 text-non-active fw-medium">No of Stories:</p>
+                            <p class="mb-1 ms-1 fw-medium">0</p>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-6 col-md-4 mb-4">
+                        <div class="d-flex">
+                            <p class="mb-1 text-non-active fw-medium">Building Status:</p>
+                            <p class="mb-1 ms-1 fw-medium">Existing</p>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-6 col-md-4 mb-4">
+                        <div class="d-flex">
+                            <p class="mb-1 text-non-active fw-medium">Business Price Included?:</p>
+                            <p class="mb-1 ms-1 fw-medium">No</p>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-6 col-md-4 mb-4">
+                        <div class="d-flex">
+                            <p class="mb-1 text-non-active fw-medium">Total Lot Area:</p>
+                            <p class="mb-1 ms-1 fw-medium">0.00 Not Specified</p>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-6 col-md-4 mb-4">
+                        <div class="d-flex">
+                            <p class="mb-1 text-non-active fw-medium">Heating and Cooling:</p>
+                            <p class="mb-1 ms-1 fw-medium">Undefined</p>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-6 col-md-4 mb-4">
+                        <div class="d-flex">
+                            <p class="mb-1 text-non-active fw-medium">Roofing:</p>
+                            <p class="mb-1 ms-1 fw-medium">Undefined</p>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-6 col-md-4 mb-4">
+                        <div class="d-flex">
+                            <p class="mb-1 text-non-active fw-medium">No of Parking:</p>
+                            <p class="mb-1 ms-1 fw-medium">0</p>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-6 col-md-4 mb-4">
+                        <div class="d-flex">
+                            <p class="mb-1 text-non-active fw-medium">Building Class:</p>
+                            <p class="mb-1 ms-1 fw-medium">Not Specified</p>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-6 col-md-4 mb-4">
+                        <div class="d-flex">
+                            <p class="mb-1 text-non-active fw-medium">Occupancy:</p>
+                            <p class="mb-1 ms-1 fw-medium">0%</p>
+                        </div>
+                    </div>
+                    <div class="d-grid mt-5">
+                        <p class="fs-5 fw-semibold">Full Description</p>
+                        <p>Great Investment Property, Monthly income, business has 10 years plus lease.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Details Section -->
+
+    <!-- Cash Flow Section-->
+    <section class="my-4 content-container mx-auto">
+        <div>
+            <div class="text-danger pb-1 d-flex flex-column align-items-start"
+                style="border-bottom: 1.5px solid #E3DBDB;">
+                <h2 class="fs-5 mt-4 ms-3 mb-1">Cash Flow</h2>
+            </div>
+            <div class="bg-danger" style="width: 8%; margin-top: -1.5px; margin-left: 16px; height: 1.5px;"></div>
+
+            <!-- Recent Financing -->
+            <div class="mt-3 px-4" style="border-bottom: 1.3px solid #E3DBDB;">
+                <p><strong>Actual - Cash Flow</strong></p>
+            </div>
+
+            <div class="table-responsive" style="overflow-x: auto;">
+                <table class="table table-sm mb-0">
+                    <thead class="table-secondary thead-padding opacity-75">
+                        <tr>
+                            <th scope="col">Cash Flow Year</th>
+                            <th scope="col">Gross Income</th>
+                            <th scope="col">Effective GrossIncome</th>
+                            <th scope="col">Operating Expenses</th>
+                            <th scope="col">Net Operating Income</th>
+                            <th scope="col">Pre Tax Cash Flow</th>
+                            <th scope="col">Cap Rate</th>
+                        </tr>
+                    </thead>
+                    <tbody class="tbody-padding">
+                        <tr>
+                            <td>2013</td>
+                            <td>$60,000.00</td>
+                            <td>$0.00</td>
+                            <td>$21,600.00</td>
+                            <td>$38,400.00</td>
+                            <td>$0.00</td>
+                            <td>0%</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="view-all-container d-flex justify-content-between align-items-center py-3 px-3"
+                    style="background-color: #F8F8F8;">
+                    <p class="mb-0 text-dark">Recent Private Funding Opportunities.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Cash Flow Section-->
+
+    <!-- Contact Section -->
+    <div class="my-4 content-container mx-auto">
+        <div>
+            <div class="text-danger pb-1 d-flex flex-column align-items-start"
+                style="border-bottom: 1.5px solid #E3DBDB;">
+                <h2 class="fs-5 mt-4 ms-3 mb-1">Contact/Links</h2>
+            </div>
+            <div class="bg-danger" style="width: 18%; margin-top: -1.5px; margin-left: 16px; height: 1.5px;"></div>
+
+            <div class="my-3 px-3 py-2 d-flex">
+                <p class="mb-0 fw-semibold fs-5">Additional Links</p>
+            </div>
+
+            <div class="px-3">
+                <div class="d-flex align-items-center mt-2">
+                    <img src="/images/link.svg" alt="" class="me-2">
+                    <a href="#" class="card-link mb-0"
+                        style="text-decoration: none;">http://loudlister.com/Commercial/10722?sr=true</a>
+                </div>
+            </div>
+
+            <div class="my-3 px-3 py-2 d-flex">
+                <p class="mb-0 fw-semibold fs-5">Contact</p>
+            </div>
+
+            <div class="px-3 pb-4">
+                <div class="d-flex align-items-center mt-2">
+                    <img src="/images/phone.svg" alt="" class="me-2">
+                    <a href="#" class="mb-0" style="text-decoration: none;">+87 851214557 85</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Contact Section -->
+
+    <!-- Map Section -->
+    <section class="my-4 content-container mx-auto">
+
+        <div class="text-danger pb-1 d-flex flex-column align-items-start" style="border-bottom: 1.5px solid #E3DBDB;">
+            <h2 class="fs-5 mt-4 ms-3 mb-1">Map</h2>
+        </div>
+        <div class="bg-danger" style="width: 4%; margin-top: -1.5px; margin-left: 14px; height: 1.5px;"></div>
+
+        <div class="m-3 col d-flex align-items-center">
+            <i class="bi bi-geo-alt text-danger fs-4"></i>
+            <h1 class="ms-1 fs-6 fw-semibold mb-0">757 Freeman Underpass</h1>
+        </div>
+
+        <div class="map-area mt-4 justify-content-center align-items-center w-80 m-3"
+            style="height: 533px; background: white; box-shadow: rgba(0, 0, 0, 0.35) 0 5px 15px; border-radius: 8px;">
+            <iframe style="width: 100%; height: 100%; border: none; border-radius: 8px;"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15795.634795685697!2d114.33198091105297!3d-8.21193657986232!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd14ff70f397b65%3A0xd4855a1d5d5b2480!2sSMK%20Negeri%201%20Banyuwangi!5e0!3m2!1sid!2sid!4v1725462390631!5m2!1sid!2sid"
+                allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+    </section>
+    <!-- Map Section -->
+
+    <script>
+        document.getElementById('viewAllFinancing').addEventListener('click', function () {
+            const hiddenRowsFinancing = document.querySelectorAll('.hidden-row-financing');
+            hiddenRowsFinancing.forEach(row => {
+                row.style.display = row.style.display === 'none' ? 'table-row' : 'none';
+            });
+        });
+
+        document.getElementById('viewAllBusiness').addEventListener('click', function () {
+            const hiddenRowsBusiness = document.querySelectorAll('.hidden-row-business');
+            hiddenRowsBusiness.forEach(row => {
+                row.style.display = row.style.display === 'none' ? 'table-row' : 'none';
+            });
+        });
+
+        document.getElementById('showMoreFinancing').addEventListener('click', function () {
+            const moreInfoFinancing = document.querySelectorAll('.more-info-financing');
+            moreInfoFinancing.forEach(row => {
+                row.style.display = row.style.display === 'none' ? 'table-row' : 'none';
+            });
+        });
+
+        document.getElementById('showMoreBusiness').addEventListener('click', function () {
+            const moreInfoBusiness = document.querySelectorAll('.more-info-business');
+            moreInfoBusiness.forEach(row => {
+                row.style.display = row.style.display === 'none' ? 'table-row' : 'none';
+            });
+        });  
+    </script>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
 </body>
+
 </html>
