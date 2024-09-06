@@ -13,6 +13,15 @@
         body {
             margin: 0 20px; 
         }
+
+        .carousel-item img {
+            transition: transform 0.5s ease;
+        }
+        
+        .carousel-item img:hover {
+            transform: scale(1.1);
+        }
+
         .text-blue {
             color: #00275E;
         }
@@ -33,7 +42,6 @@
             border: 1px solid #676A6C;
             border-radius: 25px;
             background-color: #fff; 
-            margin-left: 10px;
             transition: background-color 0.3s ease;
             padding: 10px 10px;
         }
@@ -83,7 +91,7 @@
         }
         .social-icons {
             display: flex;
-            gap: 50px; 
+            gap: 30px; 
             align-items: center;
             margin-top: 20px;
             padding: 20px;
@@ -200,18 +208,18 @@
                 </ol>
             </nav>
             <div class="col-md-8 order-main-image">
-                <p class="fs-5 text-blue fw-medium mb-3">
-                    Farm Store, Great Income Producing Opportunity
+                <p class="fs-5 text-blue fw-medium mb-3"  id="item-name">
+                    
                 </p>
                 <div id="carouselExample" class="carousel slide">
                     <div class="carousel-inner">
-                        <div class="carousel-item active">
+                        <div class="carousel-item active" data-name="Farm Store, Great Income Producing Opportunity" data-address="6341 Johnson Street, Cooper City Florida 33024">
                             <img src="/images/Hero Image.png" class="d-block w-100" alt="...">
                         </div>
-                        <div class="carousel-item">
+                        <div class="carousel-item"  data-name="Test 2 Farm Store, Great Income Producing Opportunity" data-address="6341 Johnson Street, Cooper City Florida 33333">
                             <img src="/images/Hero Image.png" class="d-block w-100" alt="...">
                         </div>
-                        <div class="carousel-item">
+                        <div class="carousel-item" data-name="Test 3 Farm Store, Great Income Producing Opportunity" data-address="6341 Johnson Street, Cooper City Florida 44444">
                             <img src="/images/logo.png" class="d-block w-100" alt="...">
                         </div>
                     </div>
@@ -228,14 +236,14 @@
                     <div class="d-flex justify-content-between location-text">
                         <div class="d-flex">
                             <i class="bi bi-geo-alt text-red fs-6"></i>
-                            <p class="text-non-active fw-medium ms-2">6341 Johnson Street, Cooper City Florida 33024 /<br>Retail / Free Standing</p> 
+                            <p class="text-non-active fw-medium ms-2" id="item-address"></p> 
                         </div>
                         <div class="d-flex button">
                             <button type="button" class="btn-custom rounded d-flex align-items-center">
                                 <i class="bi bi-plus-lg"></i>
                                 <p class="mb-0 fw-medium">Add Opportunity</p>
                             </button>
-                            <button type="button" class="btn-custom rounded d-flex align-items-center">
+                            <button type="button" class="btn-custom ms-2 rounded d-flex align-items-center">
                                 <i class="bi bi-check2-all"></i>
                                 <p class="mb-0 fw-medium">Make Soft Offer</p>
                             </button>
@@ -468,6 +476,24 @@
             </div>
         </div>
     </div>
+
+    <script>
+        const carouselElement = document.querySelector('#carouselExample');
+        const itemNameElement = document.getElementById('item-name');
+        const itemAddressElement = document.getElementById('item-address');
+
+        const updateDetails = () => {
+            const activeItem = document.querySelector('.carousel-item.active');
+            itemNameElement.textContent = activeItem.getAttribute('data-name');
+            itemAddressElement.textContent = activeItem.getAttribute('data-address');
+        };
+
+        // Update details on carousel slide event
+        carouselElement.addEventListener('slid.bs.carousel', updateDetails);
+
+        // Initial update
+        updateDetails();
+    </script>
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
